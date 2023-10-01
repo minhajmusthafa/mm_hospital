@@ -1,0 +1,39 @@
+{% extends "doctor_module/doctorindex.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+<h3 align="center" class="mb-4 mt-4">appointed patients</h3>
+  <table class="table table-bordered">
+    <tr>
+      <th width="19">#</th>
+      <th width="116">Patient Name</th>
+      <th width="123">Token Number</th>
+      <th width="278">&nbsp;</th>
+    </tr>
+       {% for i in data %}
+
+    <tr>
+      <td>{{ forloop.counter }}&nbsp;</td>
+      <td>&nbsp;{{ i.patient.p_name }}</td>
+      <td>{{ i.token }}&nbsp;</td>
+      <td><p><a href="/patientDetails/{{ i.patient.id }}#aaa" class="btn btn-success">Patient Details</a></p>
+        <p><a href="/addprescription/{{ i.id }}#aaa" class="btn btn-success">Add Prescription</a></p>
+        <p><a href="/viewprescription/{{ i.id }}#aaa" class="btn btn-success">View Prescription</a></p>
+        <p><a href="/delete_patient_appointment/{{ i.id }}#aaa" class="btn btn-success">Delete Patient</a></p>
+          <p><a href="/chatdocget/{{ i.patient.id }}#aaa" class="btn btn-success">Chat</a></p>
+      </td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

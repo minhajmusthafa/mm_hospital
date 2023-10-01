@@ -1,0 +1,45 @@
+{% extends "admin_module/adminindex.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="get" action="">
+<h3 align="center" class="mt-4 mb-4">view patients</h3>
+  <table class="table table-bordered">
+    <tr>
+      <th>#</th>
+        <th>photo</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Sex</th>
+      <th>Place</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <td></td>
+
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td><img src="{{i.photo  }}" width="100" height="100"></td>
+      <td>{{ i.p_name }}&nbsp;</td>
+      <td>{{ i.age }}&nbsp;</td>
+      <td>{{ i.gender }}&nbsp;</td>
+      <td>{{ i.place }}&nbsp;</td>
+      <td>{{ i.phone }}</td>
+      <td>{{ i.email }}</td>
+
+        <td ><a href="/deletepatientad/{{ i.id }}" class="btn btn-success">Delete</a>&nbsp;</td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

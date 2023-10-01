@@ -1,0 +1,42 @@
+{% extends "patient_module/patientindex.html" %}
+{% block body %}
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script>
+function validateForm() {
+  var rateField = document.getElementById("textfield");
+  var rateValue = parseFloat(rateField.value);
+
+  if (isNaN(rateValue) || rateValue < 1 || rateValue > 5) {
+    alert("Please enter a rate between 1 and 5.");
+    return false;
+  }
+
+  return true;
+}
+</script>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="" onsubmit="return validateForm()">
+    {% csrf_token %}
+  <h3 align="center" class="mb-4 mt-4">rate</h3>
+  <table class="table table-bordered">
+    <tr>
+      <th>Rate</th>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" placeholder="rate under 5"  required class="form-control"/></td>
+    </tr>
+    <tr>
+      <td height="49" colspan="2" align="center"><input type="submit" name="button" id="button" value="Submit" class="btn btn-primary" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

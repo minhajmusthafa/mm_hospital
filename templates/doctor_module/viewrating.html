@@ -1,0 +1,39 @@
+{% extends "doctor_module/doctorindex.html" %}
+{% block body %}
+{#    {% load tointval %}#}
+{##}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+<h3 align="center" class="mb-4 mt-4">rating</h3>
+  <table class="table table-bordered">
+    <tr>
+      <th width="108" scope="col">#</th>
+      <th width="164" scope="col">Patient Name</th>
+      <th width="162" scope="col">Rating</th>
+    </tr>
+      {% for i in d %}
+    <tr>
+      <td>{{ forloop.counter }}{{ i }}</td>
+      <td>{{ data.0 }}&nbsp;</td>
+        <td>
+                <img src="{{ r1.i.0 }}" width="20" height="20" alt="">
+                <img src="{{ r1.i.1 }}" width="20" height="20">
+                <img src="{{ r1.i.2 }}" width="20" height="20">
+                <img src="{{ r1.i.3 }}" width="20" height="20">
+                <img src="{{ r1.i.4 }}" width="20" height="20">
+            </td>
+{#      <td>{{ i.rating }}&nbsp;</td>#}
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

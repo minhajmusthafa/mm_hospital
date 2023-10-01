@@ -1,0 +1,43 @@
+{% extends "admin_module/adminindex.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+<h3 align="center" class="mb-4 mt-4">View Doctor</h3>
+  <table class="table table-bordered">
+    <tr>
+      <th width="12">#</th>
+      <th width="67">Doctor Name</th>
+      <th width="39">Age</th>
+      <th width="71">Gender</th>
+      <th width="56">Email</th>
+      <th width="92">Qualification</th>
+      <th width="78">Photo</th>
+      <th width="317">&nbsp;</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ i.d_name }}</td>
+      <td>{{ i.age }}</td>
+      <td>{{ i.gender }}</td>
+      <td>{{ i.email }}</td>
+      <td>{{ i.qualification }}</td>
+      <td><img src="{{ i.photo  }}" width="100" height="100"></td>
+      <td><a href="adddschedule/{{ i.id }}#aaa" class="btn btn-success mb-1">Add Schedule</a><br>
+      <a href="deletedoctorr/{{ i.id }}#aaa" class="btn btn-success mb-1">delete</a><br>
+        <a href="updatedoctorr/{{ i.id }}#aaa" class="btn btn-success mb-1">update</a></td>
+    </tr>
+       {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

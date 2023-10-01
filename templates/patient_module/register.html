@@ -1,0 +1,99 @@
+{% extends "patientregindex.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+       <script>
+  function validate() {
+
+        input=document.getElementById("textfield7");
+        var st=input.value.split("@");
+        var ln=st.length;
+        if (st[ln-1]!="gmail.com") {
+            alert("Invalid email address!");
+            input.focus();
+            return false;
+          }
+        return true;
+    }
+</script>
+</head>
+
+<body>
+<form action="" method="post" enctype="multipart/form-data" name="form1" onsubmit="return validate()" id="form1">
+    {% csrf_token %}
+<h1 class="mt-4 mb-4"></h1>
+  <table class="table table-bordered">
+    <tr>
+      <th>Name</th>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" pattern="[A-Za-z]{3,25}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>Age</th>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2" required class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>D-O-B</th>
+      <td><label for="dateofbirth"></label>
+      <input type="date" name="dateofbirth" id="dateofbirth" required  class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>Sex</th>
+      <td><p>
+        <label>
+          <input type="radio" name="sex" value="male" id="sex_0" />
+          male</label>
+        <br />
+        <label>
+          <input type="radio" name="sex" value="female" id="sex_1" />
+          female</label>
+        <br />
+      </p></td>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <td><label for="textfield3"></label>
+      <input type="text" name="textfield3" id="textfield3" pattern="[6789][0-9]{9}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>Place</th>
+      <td><label for="textfield4"></label>
+      <input type="text" name="textfield4" id="textfield4" pattern="([A-z0-9À-ž\s]){2,}" required class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>Post</th>
+      <td><label for="textfield5"></label>
+      <input type="text" name="textfield5" id="textfield5" pattern="([A-z0-9À-ž\s]){2,}" required class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>Pin</th>
+      <td><label for="textfield6"></label>
+      <input type="text" name="textfield6" id="textfield6" pattern="[6][0-9]{5}" required class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><label for="textfield7"></label>
+      <input type="email" name="textfield7" id="textfield7" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>Photo</th>
+      <td><label for="fileField"></label>
+      <input type="file" name="fileField" id="fileField" required/></td>
+    </tr>
+    <tr>
+      <th>Password</th>
+      <td><label for="textfield8"></label>
+      <input type="text" name="textfield8" id="textfield8" required class="form-control"/></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="submit" name="button" id="button" value="Register" class="btn btn-success"/></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

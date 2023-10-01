@@ -1,0 +1,97 @@
+{% extends "patient_module/patientindex.html" %}
+{% block body %}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+        <script>
+  function validate() {
+
+        input=document.getElementById("textfield7");
+        var st=input.value.split("@");
+        var ln=st.length;
+        if (st[ln-1]!="gmail.com") {
+            alert("Invalid email address!");
+            input.focus();
+            return false;
+          }
+        return true;
+    }
+</script>
+
+</head>
+
+<body>
+<form action="" method="post" enctype="multipart/form-data" name="form1"  onsubmit="return validate()" id="form1">
+{% csrf_token %}
+<h3 align="center" class="mt-4 mb-4">update profile</h3>
+  <table class="table table-bordered">
+   <tr>
+      <td colspan="2"><label for="fileField"><img src="{{ data.photo }}" width="100" height="100"></label>
+      <input type="file" name="fileField" id="fileField" /></td>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" value="{{ data.p_name }}" required class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>Age</th>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2" value="{{ data.age }}" required class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>D-O-B</th>
+      <td><label for="dateofbirth"></label>
+      <input type="date" name="dateofbirth" id="dateofbirth" value="{{ data.dob }}" required class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>Gender</th>
+      <td><p>
+        <label>
+          <input type="radio" name="sex" value="male" id="sex_0" {% if data.gender == 'male' %}checked{% endif %} />
+          male</label>
+        <br />
+        <label>
+          <input type="radio" name="sex" value="female" id="sex_1" {% if data.gender == 'female' %}checked{% endif %} />
+          female</label>
+        <br />
+      </p></td>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <td><label for="textfield3"></label>
+      <input type="text" name="textfield3" id="textfield3" pattern="[6789][0-9]{9}" value="{{ data.phone }}" required class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>Place</th>
+      <td><label for="textfield4"></label>
+      <input type="text" name="textfield4" id="textfield4" pattern="([A-z0-9À-ž\s]){2,}" value="{{ data.place }}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>Post</th>
+      <td><label for="textfield5"></label>
+      <input type="text" name="textfield5" id="textfield5" required pattern="([A-z0-9À-ž\s]){2,}" value="{{ data.post }}" class="form-control" /></td>
+    </tr>
+    <tr>
+      <th>Pin</th>
+      <td><label for="textfield6"></label>
+      <input type="text" name="textfield6" id="textfield6" pattern="[6][0-9]{5}" value="{{ data.pin }}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><label for="textfield7"></label>
+      <input type="email" name="textfield7" id="textfield7" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" value="{{ data.email }}" class="form-control"/></td>
+    </tr>
+
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="button" id="button" value="Update" class="btn btn-primary"/></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

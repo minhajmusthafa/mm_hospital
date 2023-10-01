@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Chat Form</title>
+<style>
+  #chatContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+  }
+  #chatMessages {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .message {
+    padding: 5px 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    margin-bottom: 5px;
+  }
+  .sender {
+    align-self: flex-end; /* Right-align sender messages */
+    background-color: #3498db;
+    color: white;
+  }
+  .receiver {
+    align-self: flex-start; /* Left-align receiver messages */
+    background-color: #e0e0e0;
+  }
+
+
+   #inputContainer {
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-top: 1px solid #ddd;
+    display: block;
+    align-items: center; /* Center align vertically */
+  }
+
+  #textfield {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+      width: 92%;
+  }
+
+  #button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin-left: 10px;
+    cursor: pointer;
+
+  }
+</style>
+</head>
+<body>
+<div id="chatContainer">
+  <div id="chatMessages">
+    {% for message in data %}
+    <div class="message {% if message.type == 'patient' %}sender{% else %}receiver{% endif %}">
+      {{ message.chat }}
+    </div>
+    {% endfor %}
+  </div>
+  <div id="inputContainer">
+    <form id="form1" name="form1" method="post" action="/chatpatientpost/{{ id }}">
+      <input type="text" name="textfield" id="textfield" />
+      <input type="submit" name="button" id="button" value="Send" />
+    </form>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% extends "admin_module/adminindex.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="get" action="">
+<h3 align="center" class="mb-4 mt-4">schedule</h3>
+  <table class="table table-bordered">
+    <tr>
+      <th width="155">#</th>
+      <th width="59">Date</th>
+      <th width="160">Doctor</th>
+      <th width="143">Starting Time</th>
+      <th width="136">Ending Time</th>
+      <th width="127">Total Token</th>
+      <th width="525">&nbsp;</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ i.date }}&nbsp;</td>
+      <td>{{ i.doctor.d_name }}</td>
+      <td>{{ i.starting_time }}&nbsp;</td>
+      <td>{{ i.ending_time }}&nbsp;</td>
+      <td>{{ i.total_token }}</td>
+      <td><p><a href="/viewappointedpatientfradmin/{{ i.id }}#aaa" class="btn btn-success">View Appointed Patients</a></p>
+          <p><a href="/deleteschedulee/{{ i.id }}" class="btn btn-success">Delete Schedule</a></p></td>
+     
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

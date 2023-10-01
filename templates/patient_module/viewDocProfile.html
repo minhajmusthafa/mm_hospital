@@ -1,0 +1,43 @@
+{% extends "patient_module/patientindex.html" %}
+{% block body %}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+    <h3 align="center" class="mb-4 mb-4">doctor profile</h3>
+  <table class="table table-bordered">
+    <tr>
+      <td colspan="2" align="center">&nbsp;<img src="{{ data.photo  }}" width="100" height="100"></td>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <td>{{ data.d_name }}&nbsp;</td>
+    </tr>
+    <tr>
+      <th>Age</th>
+      <td>{{ data.age }}&nbsp;</td>
+    </tr>
+    <tr>
+        <th>Sex</th>
+        <td>{{ data.gender }}</td>
+    </tr>
+    <tr>
+      <th>Qualification</th>
+      <td>{{ data.qualification }}&nbsp;</td>
+    </tr>
+    <tr>
+      <th>Contact</th>
+      <td>{{ data.phone }}&nbsp;</td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

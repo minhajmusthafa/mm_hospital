@@ -1,0 +1,40 @@
+{% extends "doctor_module/doctorindex.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+    <h3 align="center" class="mt-4 mb-4">prescription</h3>
+  <table class="table table-bordered">
+    <tr>
+      <th>#</th>
+      <th>Drug Name</th>
+      <th>Duration</th>
+      <th>Dosage</th>
+      <th>Route</th>
+      <th>Instruction</th>
+      <th>&nbsp;</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}&nbsp;</td>
+      <td>&nbsp;{{ i.drug_name }}</td>
+      <td>{{ i.duration }}&nbsp;</td>
+      <td>&nbsp;{{ i.dosage }}</td>
+      <td>{{ i.route }}&nbsp;</td>
+      <td>{{ i.instruction }}&nbsp;</td>
+      <td><p><a href="/delete_drug/{{ i.id }}" class="btn btn-success">Remove</a></p>
+      <p><a href="/update_drug/{{ i.id }}#aaa" class="btn btn-success">Update</a></p></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

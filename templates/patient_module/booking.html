@@ -1,0 +1,47 @@
+{% extends "patient_module/patientindex.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+<h3 align="center" class="mt-4 mb-4">booking</h3>
+  <table class="table table-bordered">
+      {% for i in data %}
+    <tr>
+      <th>Token Number</th>
+      <td>{{ i.token }}&nbsp;</td>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <td>{{ i.date }}&nbsp;</td>
+    </tr>
+    <tr>
+      <th>Doctor Name</th>
+      <td>{{ i.Schedule.doctor.d_name }}&nbsp;</td>
+    </tr>
+    <tr>
+      <th>Starting Time</th>
+      <td>{{ i.Schedule.starting_time }}&nbsp;</td>
+    </tr>
+    <tr>
+      <th>Ending Time</th>
+      <td>{{ i.Schedule.ending_time }}&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2"><a href="/pViewPrescription/{{ i.appointment_id.id }}" class="btn btn-success">View Prescription</a></td>
+    </tr>
+    <tr>
+      <td colspan="2"><a href="#">Rate Doctor</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}
